@@ -2,7 +2,6 @@ import { lightColors } from "@shared/help/colors";
 import { verticalScale } from "@shared/help/metrics";
 import { spacing } from "@shared/help/spacing";
 import { StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export const stylesHeader = StyleSheet.create({
     container: {
@@ -13,6 +12,7 @@ export const stylesHeader = StyleSheet.create({
         paddingBottom: spacing[16],
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
     },
     containerIconsHeader: {
         flexDirection: "row",

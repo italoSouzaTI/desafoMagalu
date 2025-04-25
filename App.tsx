@@ -1,21 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { Header } from "@shared/components/Header/Header";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { lightColors } from "@shared/help/colors";
+import { spacing } from "@shared/help/spacing";
+import { Card, Header } from "@shared/components";
+import { Home } from "src/feature";
 export default function App() {
     return (
         <SafeAreaProvider>
-            <Header />;
+            <StatusBar backgroundColor={lightColors.purple900} style="light" />
+            <Home />
         </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-});

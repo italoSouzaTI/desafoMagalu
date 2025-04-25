@@ -9,6 +9,8 @@ export interface Colors {
     white: string;
     red: string;
     gray: string;
+    background: string;
+    black: string;
 }
 
 export const lightColors: Colors = {
@@ -20,4 +22,6 @@ export const lightColors: Colors = {
     white: "#FAFAFA",
     red: "#FF0C0C",
     gray: "#C4C4C4",
+    background: "#EFEFEF",
+    black: "#000",
 };
