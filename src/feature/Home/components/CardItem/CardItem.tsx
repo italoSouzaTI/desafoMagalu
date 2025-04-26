@@ -7,6 +7,7 @@ import { isTablet, moderateScale } from "@shared/help/metrics";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { IProduct } from "src/feature/https/types/getProducts";
+import { useCurrentFavorite } from "@store/useCurrentFavorite";
 
 interface ICardItem {
     product: IProduct;
@@ -14,7 +15,7 @@ interface ICardItem {
 export function CardItem({ product }: ICardItem) {
     const [isFavorite, setIsFavorite] = useState(false);
     const { navigate } = useNavigation();
-    console.log(product);
+    const { setCurrentFavorite } = useCurrentFavorite((state) => state);
     return (
         <Card>
             <View style={stylesCardItem.row}>
@@ -22,6 +23,7 @@ export function CardItem({ product }: ICardItem) {
                     style={stylesCardItem.containerImg}
                     activeOpacity={1}
                     onPress={() => {
+                        setCurrentFavorite(product);
                         navigate("Details");
                     }}
                 >
@@ -48,6 +50,7 @@ export function CardItem({ product }: ICardItem) {
                     <TouchableOpacity
                         activeOpacity={1}
                         onPress={() => {
+                            setCurrentFavorite(product);
                             navigate("Details");
                         }}
                     >
@@ -75,7 +78,7 @@ export function CardItem({ product }: ICardItem) {
                     >
                         <Typography
                             textSize={spacing[16]}
-                            label={product?.price}
+                            label={`$ ${product?.price}`}
                             textColor="black"
                             labelWeight="bold"
                         />

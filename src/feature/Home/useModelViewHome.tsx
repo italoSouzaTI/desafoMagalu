@@ -28,7 +28,18 @@ export function useModelViewHome() {
             }
             return { ...item, active: false };
         });
+        if (id === 1) {
+            setListProduct(listProductQuery.data);
+        } else {
+            handleFavorite();
+        }
+
         setDataTab(cloneDataTab);
+    }
+    function handleFavorite() {
+        let cloneListProduct = listProduct.slice();
+        let newFavority = cloneListProduct.filter((item) => item.isFavorite === true);
+        setListProduct(newFavority);
     }
 
     async function transformDataList() {
@@ -37,12 +48,13 @@ export function useModelViewHome() {
             auxData?.map((item) => {
                 item.isFavorite = false;
             });
+            console.log("0-0");
             setListProduct(auxData);
         } catch (error) {}
     }
     useEffect(() => {
         if (listProductQuery.hasOwnProperty("data") && listProductQuery.data != undefined) {
-            setListProduct(listProductQuery.data);
+            transformDataList();
         }
     }, [listProductQuery.data]);
     return {

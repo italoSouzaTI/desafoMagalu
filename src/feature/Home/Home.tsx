@@ -12,7 +12,7 @@ import { IProduct } from "../https/types/getProducts";
 export function Home() {
     const { dataTab, handleTab, listProduct, loading } = useModelViewHome();
 
-    if (loading) {
+    if (loading && listProduct.length === 0) {
         return (
             <>
                 <Header />
@@ -30,10 +30,22 @@ export function Home() {
     }
 
     function renderItem(item: IProduct) {
-        console.log("renderItem", item);
         return <CardItem product={item} />;
     }
-
+    function renderEmpty() {
+        return (
+            <View
+                style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Typography label="Nehum item foi favoritado" textColor="gray" textSize={spacing[16]} />
+            </View>
+        );
+    }
+    console.log("listProduct", listProduct);
     return (
         <>
             <Header />
@@ -67,6 +79,7 @@ export function Home() {
                     }}
                     data={listProduct}
                     renderItem={({ item }) => renderItem(item)}
+                    ListEmptyComponent={renderEmpty}
                     ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
                     estimatedItemSize={50}
                 />

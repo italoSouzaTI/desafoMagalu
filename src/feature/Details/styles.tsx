@@ -7,7 +7,7 @@ export const stylesDetails = StyleSheet.create({
     ContainerImage: {
         width: Dimensions.get("screen").width,
         height: Dimensions.get("screen").height / 4,
-        backgroundColor: lightColors.gray,
+        backgroundColor: lightColors.black,
         position: "relative",
     },
     raite: {
