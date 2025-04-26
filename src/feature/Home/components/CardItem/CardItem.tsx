@@ -5,37 +5,54 @@ import { styles } from "@gorhom/bottom-sheet/lib/typescript/components/bottomShe
 import { spacing } from "@shared/help/spacing";
 import { isTablet } from "@shared/help/metrics";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export function CardItem() {
     const [isFavorite, setIsFavorite] = useState(false);
+    const { navigate } = useNavigation();
     return (
         <Card>
             <View style={stylesCardItem.row}>
-                <View style={stylesCardItem.raite}>
-                    <Typography label="3.9" labelWeight="bold" textColor="black" textSize={spacing[12]} />
-                </View>
-                <Image style={stylesCardItem.containerImg} />
+                <TouchableOpacity
+                    style={stylesCardItem.containerImg}
+                    activeOpacity={1}
+                    onPress={() => {
+                        navigate("Details");
+                    }}
+                >
+                    <View style={stylesCardItem.raite}>
+                        <Typography label="3.9" labelWeight="bold" textColor="black" textSize={spacing[12]} />
+                    </View>
+                    <Image style={stylesCardItem.containerImg} />
+                </TouchableOpacity>
                 <View
                     style={{
                         width: isTablet ? "68%" : "62%",
                         gap: spacing[8],
                     }}
                 >
-                    <Typography
-                        textSize={spacing[16]}
-                        label="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
-                        textColor="black"
-                        labelWeight="bold"
-                    />
-                    <Typography
-                        textSize={spacing[16]}
-                        label="Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday"
-                        textColor="black"
-                        labelWeight="300"
-                        propsText={{
-                            numberOfLines: 2,
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        onPress={() => {
+                            navigate("Details");
                         }}
-                    />
+                    >
+                        <Typography
+                            textSize={spacing[16]}
+                            label="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+                            textColor="black"
+                            labelWeight="bold"
+                        />
+                        <Typography
+                            textSize={spacing[16]}
+                            label="Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday"
+                            textColor="black"
+                            labelWeight="300"
+                            propsText={{
+                                numberOfLines: 2,
+                            }}
+                        />
+                    </TouchableOpacity>
                     <View
                         style={{
                             flexDirection: "row",

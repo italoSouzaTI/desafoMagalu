@@ -8,4 +8,15 @@ export const stylesHome = StyleSheet.create({
         backgroundColor: lightColors.background,
         padding: spacing[16],
     },
+    rowTab: {
+        flexDirection: "row",
+        gap: spacing[24],
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: spacing[16],
+    },
+    containerTab: {
+        borderRadius: spacing[16],
+        padding: spacing[8],
+    },
 });
