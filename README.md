@@ -32,11 +32,11 @@ yarn;
 
 ### Crie um aplicativo que permita:
 
--   [ ] Listar produtos (título, imagem, preço e review).
+-   [x] Listar produtos (título, imagem, preço e review).
 -   [ ] Marcar/desmarcar produtos como favoritos.
--   [ ] Visualizar apenas os itens favoritos.
+-   [x] Visualizar apenas os itens favoritos.
 -   [ ] Persistir localmente os dados (via AsyncStorage ou banco local).
--   [ ] https://fakestoreapi.com/docs
+-   [x] https://fakestoreapi.com/docs
 
 Listar todos os produtos:
 GET https://fakestoreapi.com/products
