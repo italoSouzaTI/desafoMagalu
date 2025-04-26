@@ -1,17 +1,31 @@
-import { Card, Header, Typography } from "@shared/components";
+import { Card, Header, IconFavorite, Typography } from "@shared/components";
 import { lightColors } from "@shared/help/colors";
 import { spacing } from "@shared/help/spacing";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { stylesDetails } from "./styles";
-import { useCurrentFavorite } from "@store/useCurrentFavorite";
+import { useCurrentFavoriteStore } from "@store/useCurrentFavoriteStore";
+import { useSaveFavorite } from "@hooks/useSaveFavorite";
 
 export function Details() {
-    const { currentFavorite } = useCurrentFavorite((state) => state);
-    console.log("currentFavorite", currentFavorite);
+    const { currentFavorite } = useCurrentFavoriteStore((state) => state);
+    const { saveFavorite } = useSaveFavorite();
     return (
         <>
             <Header isGoBack title="Product details" />
             <View style={stylesDetails.ContainerImage}>
+                <TouchableOpacity
+                    onPress={() => {
+                        saveFavorite(currentFavorite);
+                    }}
+                    style={{
+                        position: "absolute",
+                        zIndex: 5,
+                        right: 30,
+                        top: 20,
+                    }}
+                >
+                    <IconFavorite sizeIcon={spacing[32]} colorIcon={currentFavorite.isFavorite ? "red" : "gray"} />
+                </TouchableOpacity>
                 <Image
                     style={stylesDetails.ContainerImage}
                     source={{ uri: currentFavorite.image }}

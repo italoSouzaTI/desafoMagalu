@@ -4,10 +4,13 @@ import { lightColors } from "@shared/help/colors";
 import { NavigationContainer } from "@react-navigation/native";
 import { Private } from "@routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { initializeStorage } from "@core/service/Database/storageService";
+import { asyncStorage } from "@core/service/Database/storage/asyncStorage";
 const queryClient = new QueryClient();
 if (__DEV__) {
     require("./src/core/ReactotronConfig");
 }
+initializeStorage(asyncStorage);
 export default function App() {
     return (
         <SafeAreaProvider>

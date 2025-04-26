@@ -45,7 +45,6 @@ export function Home() {
             </View>
         );
     }
-    console.log("listProduct", listProduct);
     return (
         <>
             <Header />

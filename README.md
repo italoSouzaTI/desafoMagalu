@@ -1,4 +1,4 @@
-## O aiqfome está testando uma nova funcionalidade que permitirá aos usuários salvarem produtos como "favoritos". A proposta é facilitar o acesso aos itens mais consumidos, otimizando a navegação e incentivando novos pedidos.
+O aiqfome está testando uma nova funcionalidade que permitirá aos usuários salvarem produtos como "favoritos". A proposta é facilitar o acesso aos itens mais consumidos, otimizando a navegação e incentivando novos pedidos.
 
 ### Como roda o projeto
 
@@ -33,9 +33,9 @@ yarn;
 ### Crie um aplicativo que permita:
 
 -   [x] Listar produtos (título, imagem, preço e review).
--   [ ] Marcar/desmarcar produtos como favoritos.
+-   [x] Marcar/desmarcar produtos como favoritos.
 -   [x] Visualizar apenas os itens favoritos.
--   [ ] Persistir localmente os dados (via AsyncStorage ou banco local).
+-   [x] Persistir localmente os dados (via AsyncStorage ou banco local).
 -   [x] https://fakestoreapi.com/docs
 
 Listar todos os produtos:
@@ -46,7 +46,7 @@ GET https://fakestoreapi.com/products/{id}
 
 ### Integrações (Opcional)
 
--   [ ] Firebase (Auth, Firestore ou Analytics);.
+-   [ ] Firebase (Auth, Firestore ou Analytics).
 -   [ ] Push Notifications (via Expo ou FCM).
 -   [ ] Deep Linking ou Links Dinâmicos.
 
@@ -67,6 +67,6 @@ GET https://fakestoreapi.com/products/{id}
 | FlashList            | ^1.8.0  |
 | tanstack/react-query | ^5.74.4 |
 | zustand              | ^5.0.3  |
-| @gorhom/bottom-sheet | ^5.1.2  |
+| axios                | ^1.9.0  |
 
 ## Explique suas escolhas.

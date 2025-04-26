@@ -1,21 +1,23 @@
 import { Card, IconFavorite, Typography } from "@shared/components";
 import { Image, TouchableOpacity, View } from "react-native";
 import { stylesCardItem } from "./styles";
-import { styles } from "@gorhom/bottom-sheet/lib/typescript/components/bottomSheetScrollable/BottomSheetFlashList";
 import { spacing } from "@shared/help/spacing";
 import { isTablet, moderateScale } from "@shared/help/metrics";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { IProduct } from "src/feature/https/types/getProducts";
-import { useCurrentFavorite } from "@store/useCurrentFavorite";
+import { useCurrentFavoriteStore } from "@store/useCurrentFavoriteStore";
+import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
+import { useListProductStore } from "@store/useListProductStore";
+import { useSaveFavorite } from "@hooks/useSaveFavorite";
 
 interface ICardItem {
     product: IProduct;
 }
 export function CardItem({ product }: ICardItem) {
-    const [isFavorite, setIsFavorite] = useState(false);
     const { navigate } = useNavigation();
-    const { setCurrentFavorite } = useCurrentFavorite((state) => state);
+    const { setCurrentFavorite } = useCurrentFavoriteStore((state) => state);
+    const { saveFavorite } = useSaveFavorite();
     return (
         <Card>
             <View style={stylesCardItem.row}>
@@ -84,10 +86,10 @@ export function CardItem({ product }: ICardItem) {
                         />
                         <TouchableOpacity
                             onPress={() => {
-                                setIsFavorite(!isFavorite);
+                                saveFavorite(product);
                             }}
                         >
-                            <IconFavorite colorIcon={isFavorite ? "red" : "gray"} />
+                            <IconFavorite colorIcon={product.isFavorite ? "red" : "gray"} />
                         </TouchableOpacity>
                     </View>
                 </View>

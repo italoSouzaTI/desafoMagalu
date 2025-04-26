@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../https/http";
 import { IProduct } from "../https/types/getProducts";
+import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
+import { useListProductStore } from "@store/useListProductStore";
 export function useModelViewHome() {
-    const [listProduct, setListProduct] = useState<IProduct[]>([]);
+    const { setListProduct, listProduct } = useListProductStore((state) => state);
+    const { favoriteProduct } = useFavoriteStorageStore((state) => state);
     const [dataTab, setDataTab] = useState([
         {
             id: 1,
@@ -29,7 +32,7 @@ export function useModelViewHome() {
             return { ...item, active: false };
         });
         if (id === 1) {
-            setListProduct(listProductQuery.data);
+            transformDataList();
         } else {
             handleFavorite();
         }
@@ -48,8 +51,14 @@ export function useModelViewHome() {
             auxData?.map((item) => {
                 item.isFavorite = false;
             });
-            console.log("0-0");
-            setListProduct(auxData);
+            const updatedProducts = auxData.map((product) => {
+                const isFavorite = favoriteProduct.includes(product.id);
+                return {
+                    ...product,
+                    isFavorite,
+                };
+            });
+            setListProduct(updatedProducts);
         } catch (error) {}
     }
     useEffect(() => {
@@ -57,6 +66,7 @@ export function useModelViewHome() {
             transformDataList();
         }
     }, [listProductQuery.data]);
+
     return {
         listProduct,
         loading: listProductQuery.isLoading,

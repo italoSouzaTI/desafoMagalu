@@ -5,9 +5,9 @@ type State = {
 };
 
 type Actions = {
-    setCurrentFavorite: (token: IProduct) => void;
+    setCurrentFavorite: (data: IProduct) => void;
 };
-export const useCurrentFavorite = create<State & Actions>((set) => ({
+export const useCurrentFavoriteStore = create<State & Actions>((set) => ({
     currentFavorite: {} as IProduct,
     setCurrentFavorite: (currentFavorite) => set({ currentFavorite }),
 }));
