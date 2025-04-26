@@ -3,11 +3,37 @@ import { TouchableOpacity, View } from "react-native";
 import { CardItem } from "./components/CardItem/CardItem";
 import { stylesHome } from "./styles";
 import { spacing } from "@shared/help/spacing";
-import { useMdelViewHome } from "./components/useMdelViewHome";
+
 import { lightColors } from "@shared/help/colors";
+import { useModelViewHome } from "./useModelViewHome";
+import { FlashList } from "@shopify/flash-list";
+import { IProduct } from "../https/types/getProducts";
 
 export function Home() {
-    const { dataTab, handleTab } = useMdelViewHome();
+    const { dataTab, handleTab, listProduct, loading } = useModelViewHome();
+
+    if (loading) {
+        return (
+            <>
+                <Header />
+                <View
+                    style={{
+                        flex: 1,
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <Typography label="Carregando..." textColor="gray" textSize={spacing[16]} />
+                </View>
+            </>
+        );
+    }
+
+    function renderItem(item: IProduct) {
+        console.log("renderItem", item);
+        return <CardItem product={item} />;
+    }
+
     return (
         <>
             <Header />
@@ -34,7 +60,16 @@ export function Home() {
                         </TouchableOpacity>
                     ))}
                 </View>
-                <CardItem />
+                <FlashList
+                    contentContainerStyle={{
+                        padding: spacing[16],
+                        paddingBottom: spacing[32],
+                    }}
+                    data={listProduct}
+                    renderItem={({ item }) => renderItem(item)}
+                    ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+                    estimatedItemSize={50}
+                />
             </View>
         </>
     );

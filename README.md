@@ -37,8 +37,9 @@ yarn;
 -   [ ] Visualizar apenas os itens favoritos.
 -   [ ] Persistir localmente os dados (via AsyncStorage ou banco local).
 -   [ ] https://fakestoreapi.com/docs
-        Listar todos os produtos:
-        GET https://fakestoreapi.com/products
+
+Listar todos os produtos:
+GET https://fakestoreapi.com/products
 
 Buscar produto por ID:
 GET https://fakestoreapi.com/products/{id}

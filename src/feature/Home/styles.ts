@@ -6,7 +6,7 @@ export const stylesHome = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: lightColors.background,
-        padding: spacing[16],
+        paddingTop: spacing[16],
     },
     rowTab: {
         flexDirection: "row",

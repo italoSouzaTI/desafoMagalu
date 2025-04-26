@@ -7,7 +7,6 @@ export const stylesCardItem = StyleSheet.create({
     containerImg: {
         width: isTablet ? horizontalScale(89) : horizontalScale(99),
         minHeight: verticalScale(99),
-        backgroundColor: lightColors.gray,
         borderRadius: moderateScale(8),
         position: "relative",
     },

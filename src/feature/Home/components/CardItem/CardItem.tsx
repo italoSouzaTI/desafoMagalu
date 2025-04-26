@@ -3,13 +3,18 @@ import { Image, TouchableOpacity, View } from "react-native";
 import { stylesCardItem } from "./styles";
 import { styles } from "@gorhom/bottom-sheet/lib/typescript/components/bottomSheetScrollable/BottomSheetFlashList";
 import { spacing } from "@shared/help/spacing";
-import { isTablet } from "@shared/help/metrics";
+import { isTablet, moderateScale } from "@shared/help/metrics";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { IProduct } from "src/feature/https/types/getProducts";
 
-export function CardItem() {
+interface ICardItem {
+    product: IProduct;
+}
+export function CardItem({ product }: ICardItem) {
     const [isFavorite, setIsFavorite] = useState(false);
     const { navigate } = useNavigation();
+    console.log(product);
     return (
         <Card>
             <View style={stylesCardItem.row}>
@@ -21,9 +26,18 @@ export function CardItem() {
                     }}
                 >
                     <View style={stylesCardItem.raite}>
-                        <Typography label="3.9" labelWeight="bold" textColor="black" textSize={spacing[12]} />
+                        <Typography
+                            label={product?.rating.rate}
+                            labelWeight="bold"
+                            textColor="black"
+                            textSize={spacing[12]}
+                        />
                     </View>
-                    <Image style={stylesCardItem.containerImg} />
+                    <Image
+                        style={{ width: moderateScale(105), height: moderateScale(120), borderRadius: spacing[8] }}
+                        source={{ uri: product.image }}
+                        resizeMode="cover"
+                    />
                 </TouchableOpacity>
                 <View
                     style={{
@@ -39,13 +53,13 @@ export function CardItem() {
                     >
                         <Typography
                             textSize={spacing[16]}
-                            label="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+                            label={product?.title}
                             textColor="black"
                             labelWeight="bold"
                         />
                         <Typography
                             textSize={spacing[16]}
-                            label="Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday"
+                            label={product?.description}
                             textColor="black"
                             labelWeight="300"
                             propsText={{
@@ -59,7 +73,12 @@ export function CardItem() {
                             justifyContent: "space-between",
                         }}
                     >
-                        <Typography textSize={spacing[16]} label="$109.95" textColor="black" labelWeight="bold" />
+                        <Typography
+                            textSize={spacing[16]}
+                            label={product?.price}
+                            textColor="black"
+                            labelWeight="bold"
+                        />
                         <TouchableOpacity
                             onPress={() => {
                                 setIsFavorite(!isFavorite);
