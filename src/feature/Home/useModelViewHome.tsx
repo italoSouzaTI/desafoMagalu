@@ -4,21 +4,11 @@ import { getProducts } from "../https/http";
 import { IProduct } from "../https/types/getProducts";
 import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
 import { useListProductStore } from "@store/useListProductStore";
+import { useDatatabStore } from "@store/useDatatabStore";
 export function useModelViewHome() {
     const { setListProduct, listProduct } = useListProductStore((state) => state);
     const { favoriteProduct } = useFavoriteStorageStore((state) => state);
-    const [dataTab, setDataTab] = useState([
-        {
-            id: 1,
-            label: "Lista",
-            active: true,
-        },
-        {
-            id: 2,
-            label: "Favorito",
-            active: false,
-        },
-    ]);
+    const { dataTab, setDataTab } = useDatatabStore((state) => state);
     const listProductQuery = useQuery({
         queryKey: ["aiqFomeProducts"],
         queryFn: async () => await getProducts(),

@@ -3,12 +3,9 @@ import { Image, TouchableOpacity, View } from "react-native";
 import { stylesCardItem } from "./styles";
 import { spacing } from "@shared/help/spacing";
 import { isTablet, moderateScale } from "@shared/help/metrics";
-import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { IProduct } from "src/feature/https/types/getProducts";
 import { useCurrentFavoriteStore } from "@store/useCurrentFavoriteStore";
-import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
-import { useListProductStore } from "@store/useListProductStore";
 import { useSaveFavorite } from "@hooks/useSaveFavorite";
 
 interface ICardItem {
