@@ -27,6 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
+          <string>desafioaiqfome</string>
           <string>com.italo.aiqfome</string>
         </array>
       </dict>

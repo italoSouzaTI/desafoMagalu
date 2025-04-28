@@ -14,8 +14,9 @@ interface HeaderProps {
     title?: string;
     isGoBack?: boolean;
     isSingUp?: boolean;
+    onpress?: () => {};
 }
-export function Header({ title = "Aiqfome", isSingUp = true, isGoBack = false }: HeaderProps) {
+export function Header({ title = "Aiqfome", isSingUp = true, isGoBack = false, onpress }: HeaderProps) {
     const { top } = useSafeAreaInsets();
     const { goBack } = useNavigation();
     const { removeToken } = useUserCurrentStore((state) => state);
@@ -45,7 +46,11 @@ export function Header({ title = "Aiqfome", isSingUp = true, isGoBack = false }:
             {isGoBack && (
                 <TouchableOpacity
                     onPress={() => {
-                        goBack();
+                        if (typeof onpress === "function") {
+                            onpress();
+                        } else {
+                            goBack();
+                        }
                     }}
                 >
                     <Ionicons name="chevron-back" size={spacing[24]} color={lightColors.white} />

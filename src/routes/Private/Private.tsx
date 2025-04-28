@@ -1,9 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import config from "metro.config";
 import { Details, Home } from "src/feature";
 
 interface PrivateProps {
     Home: undefined;
-    Details: undefined;
+    Details: { productId: number };
 }
 export function Private() {
     const Stack = createNativeStackNavigator<PrivateProps>();

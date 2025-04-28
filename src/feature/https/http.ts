@@ -9,10 +9,10 @@ export async function getProducts(): Promise<IProduct[]> {
         throw error;
     }
 }
-export async function getProductId(id: number) {
+export async function getProductId(id: number): Promise<IProduct> {
     try {
         const response = await api.get(`products/${id}`);
-        return response;
+        return response.data;
     } catch (error) {
         throw error;
     }

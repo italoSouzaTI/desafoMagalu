@@ -3,7 +3,7 @@ import { Alert, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Header, Input, Typography } from "@shared/components";
 import { stylesSingUp } from "./styles";
-import { createUserWithEmailAndPassword } from "@react-native-firebase/auth";
+import auth from "@react-native-firebase/auth";
 
 export function SingUp({ navigation }) {
     const { top } = useSafeAreaInsets();
@@ -25,7 +25,7 @@ export function SingUp({ navigation }) {
         try {
             setLoadingRegister(true);
             if (validation) {
-                createUserWithEmailAndPassword(emailSingUp, passwordSingUp);
+                auth().createUserWithEmailAndPassword(emailSingUp, passwordSingUp);
                 Alert.alert("Sucesso", "Conta criada com sucesso", [
                     {
                         text: "OK",

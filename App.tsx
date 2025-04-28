@@ -12,13 +12,26 @@ if (__DEV__) {
     require("./src/core/ReactotronConfig");
 }
 initializeStorage(asyncStorage);
+const linking = {
+    prefixes: ["desafioaiqfome://", "com.italo.aiqfome://"],
+    config: {
+        screens: {
+            Details: {
+                path: "/Details/:productId",
+                parse: {
+                    productId: (productId: string) => productId,
+                },
+            },
+        },
+    },
+};
 export default function App() {
     const TOKEN = useUserCurrentStore((state) => state.token);
     return (
         <SafeAreaProvider>
             <StatusBar backgroundColor={lightColors.purple900} style="light" />
             <QueryClientProvider client={queryClient}>
-                <NavigationContainer>{TOKEN?.length ? <Private /> : <Public />}</NavigationContainer>
+                <NavigationContainer linking={linking}>{TOKEN?.length ? <Private /> : <Public />}</NavigationContainer>
             </QueryClientProvider>
         </SafeAreaProvider>
     );

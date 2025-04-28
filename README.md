@@ -70,3 +70,15 @@ GET https://fakestoreapi.com/products/{id}
 | axios                | ^1.9.0  |
 
 ## Explique suas escolhas.
+
+| link para deeplink do app |                      |
+| ------------------------- | -------------------- |
+| iOS                       | Android              |
+| desafioaiqfome://         | com.italo.aiqfome:// |
+| com.italo.aiqfome://      | desafioaiqfome://    |
+
+como executar deeplink no terminal
+
+```javascript
+npx uri-scheme open com.italo.aiqfome://port --platform
+```

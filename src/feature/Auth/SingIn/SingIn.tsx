@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { spacing } from "@shared/help/spacing";
 import Logo from "@assets/logo.png";
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "@react-native-firebase/auth";
+import auth from "@react-native-firebase/auth";
 import { useUserCurrentStore } from "@store/useUserCurrentStore";
 
 export function SingIn({ navigation }) {
@@ -29,7 +29,7 @@ export function SingIn({ navigation }) {
         try {
             if (validation) {
                 setLoadingSingIn(true);
-                const userCredential = await signInWithEmailAndPassword(emailSingIn, passwordSingIn);
+                const userCredential = await auth().signInWithEmailAndPassword(emailSingIn, passwordSingIn);
                 setToken(userCredential.user.uid);
             }
         } catch (error) {
