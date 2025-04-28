@@ -1,5 +1,7 @@
 ![Image](https://github.com/user-attachments/assets/58009229-9b5a-45a9-b35b-d3a3dcc16195)
+
 O aiqfome está testando uma nova funcionalidade que permitirá aos usuários salvarem produtos como "favoritos". A proposta é facilitar o acesso aos itens mais consumidos, otimizando a navegação e incentivando novos pedidos.
+
 [Figma](https://www.figma.com/design/evd0lwjgLCL8sO1zXJgUtB/Desafio-Magalu?node-id=18-4&t=ur1zyIY9H0HRN5sE-1)
 
 ### Como roda o projeto
