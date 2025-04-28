@@ -31,6 +31,7 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
 
 # typescript
 *.tsbuildinfo
@@ -75,4 +76,8 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+
+#google
+GoogleService-Info.plist
+google-services.json
 # @end expo-cli
