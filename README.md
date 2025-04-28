@@ -29,7 +29,22 @@ Tenha o **Yarn** na versão
 Após as verificações acima, com projeto aberto na sua IDE de preferência, rode o comando abaixo, isso instalara todas depências do projeto necessarias.
 
 ```javascript
-yarn;
+yarn
+```
+
+É preciso criar um arquivo na raiz do projeto chamado .env com seguinte conteúdo dentro 
+```javascript
+EXPO_PUBLIC_BASE_URL = "https://fakestoreapi.com/"
+```
+
+Para executar no android 
+```javascript
+yarn android
+```
+
+Para executar no android 
+```javascript
+yarn ios
 ```
 
 # Requistos do projeto
