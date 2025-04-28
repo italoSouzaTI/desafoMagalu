@@ -26,8 +26,8 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="com.italo.aiqfome"/>
         <data android:scheme="desafioaiqfome"/>
+        <data android:scheme="com.italo.aiqfome"/>
       </intent-filter>
     </activity>
   </application>

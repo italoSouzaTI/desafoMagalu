@@ -11,7 +11,7 @@ type State = {
 type Actions = {
     setDataTab: (data: IdataTab[]) => void;
 };
-export const useDataTabStore = create<State & Actions>((set) => ({
+export const useDatatabStore = create<State & Actions>((set) => ({
     dataTab: [
         {
             id: 1,

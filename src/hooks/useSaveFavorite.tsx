@@ -1,10 +1,10 @@
-import { useDataTabStore } from "@store/useDataTabStore";
+import { useDatatabStore } from "@store/useDatatabStore";
 import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
 import { useListProductStore } from "@store/useListProductStore";
 import { IProduct } from "src/feature/https/types/getProducts";
 
 export function useSaveFavorite() {
-    const { dataTab } = useDataTabStore((state) => state);
+    const { dataTab } = useDatatabStore((state) => state);
     const { setListProduct, listProduct } = useListProductStore((state) => state);
     const { favoriteProduct, setFavoriteProduct } = useFavoriteStorageStore((state) => state);
     function saveFavorite(product: IProduct) {

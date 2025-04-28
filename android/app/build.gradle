@@ -86,7 +86,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.italo.aiqfome'
+    namespace "com.italo.aiqfome"
     defaultConfig {
         applicationId 'com.italo.aiqfome'
         minSdkVersion rootProject.ext.minSdkVersion
