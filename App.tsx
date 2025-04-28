@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { initializeStorage } from "@core/service/Database/storageService";
 import { asyncStorage } from "@core/service/Database/storage/asyncStorage";
 import { useUserCurrentStore } from "@store/useUserCurrentStore";
+
 const queryClient = new QueryClient();
 if (__DEV__) {
     require("./src/core/ReactotronConfig");

@@ -10,7 +10,7 @@ import { FlashList } from "@shopify/flash-list";
 import { IProduct } from "../https/types/getProducts";
 
 export function Home() {
-    const { dataTab, handleTab, listProduct, loading } = useModelViewHome();
+    const { dataTab, handleTab, listProduct, loading, listProductQuery } = useModelViewHome();
 
     if (loading && listProduct.length === 0) {
         return (
@@ -72,6 +72,8 @@ export function Home() {
                     ))}
                 </View>
                 <FlashList
+                    refreshing={listProductQuery.isRefetching}
+                    onRefresh={listProductQuery.refetch}
                     contentContainerStyle={{
                         padding: spacing[16],
                         paddingBottom: spacing[32],

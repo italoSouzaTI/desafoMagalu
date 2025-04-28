@@ -1,35 +1,11 @@
-import { Card, Header, IconFavorite, Typography } from "@shared/components";
-import { lightColors } from "@shared/help/colors";
+import { Header, IconFavorite, Typography } from "@shared/components";
 import { spacing } from "@shared/help/spacing";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import { stylesDetails } from "./styles";
-import { useCurrentFavoriteStore } from "@store/useCurrentFavoriteStore";
-import { useSaveFavorite } from "@hooks/useSaveFavorite";
-import { useRoute } from "@react-navigation/native";
-import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getProductId } from "../https/http";
-import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
+import { useModelViewDetails } from "./useModelViewDetails";
 
 export function Details({ navigation }) {
-    const { params } = useRoute();
-    console.log(params);
-    const { favoriteProduct } = useFavoriteStorageStore((state) => state);
-    const { currentFavorite, setCurrentFavorite } = useCurrentFavoriteStore((state) => state);
-    const { saveFavorite } = useSaveFavorite();
-    const ProductQuery = useQuery({
-        enabled: !!params?.productId,
-        queryKey: [`aiqFomeProducts/${params?.productId}`],
-        queryFn: async () => await getProductId(Number(params.productId)),
-    });
-    useEffect(() => {
-        if (params != undefined && ProductQuery.isSuccess && ProductQuery.data) {
-            let currentData = ProductQuery.data;
-            const isFavorite = favoriteProduct.includes(Number(params.productId));
-            currentData.isFavorite = isFavorite;
-            setCurrentFavorite(currentData);
-        }
-    }, [ProductQuery.isSuccess, ProductQuery.data, setCurrentFavorite]);
+    const { params, currentFavorite, ProductQuery, saveFavorite } = useModelViewDetails();
     if (params != undefined && ProductQuery.isLoading && !!currentFavorite) {
         return (
             <>

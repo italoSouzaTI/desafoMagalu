@@ -4,23 +4,19 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Header, Input, Typography } from "@shared/components";
 import { stylesSingUp } from "./styles";
 import auth from "@react-native-firebase/auth";
+import { useModelViewSingUp } from "./useModelViewSingUp";
 
 export function SingUp({ navigation }) {
-    const { top } = useSafeAreaInsets();
-    const [emailSingUp, setEmailSingUp] = useState<string>();
-    const [passwordSingUp, setPasswordSingUp] = useState<string>();
-    const [loaginRegister, setLoadingRegister] = useState(false);
-    function validation() {
-        if (emailSingUp?.length == 0) {
-            Alert.alert("Preencha o campo E-mail");
-            return false;
-        }
-        if (passwordSingUp?.length == 0) {
-            Alert.alert("Preencha o campo senha");
-            return false;
-        }
-        return true;
-    }
+    const {
+        top,
+        emailSingUp,
+        passwordSingUp,
+        loaginRegister,
+        setLoadingRegister,
+        setEmailSingUp,
+        setPasswordSingUp,
+        validation,
+    } = useModelViewSingUp();
     async function handleRegister() {
         try {
             setLoadingRegister(true);

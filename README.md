@@ -46,9 +46,9 @@ GET https://fakestoreapi.com/products/{id}
 
 ### Integrações (Opcional)
 
--   [ ] Firebase (Auth, Firestore ou Analytics).
+-   [x] Firebase (Auth, Firestore ou Analytics).
 -   [ ] Push Notifications (via Expo ou FCM).
--   [ ] Deep Linking ou Links Dinâmicos.
+-   [x] Deep Linking ou Links Dinâmicos.
 
 | Critério                                             | Peso     |
 | ---------------------------------------------------- | -------- |
@@ -61,15 +61,24 @@ GET https://fakestoreapi.com/products/{id}
 
 ## Bibliotecas usadas
 
-| lib                  | Versão  |
-| -------------------- | ------- |
-| React navigation     | 6.x     |
-| FlashList            | ^1.8.0  |
-| tanstack/react-query | ^5.74.4 |
-| zustand              | ^5.0.3  |
-| axios                | ^1.9.0  |
+| lib                    | Versão  |
+| ---------------------- | ------- |
+| React navigation       | 6.x     |
+| @shopify/flash-list    | ^1.8.0  |
+| tanstack/react-query   | ^5.74.4 |
+| zustand                | ^5.0.3  |
+| axios                  | ^1.9.0  |
+| @react-native-firebase | 22      |
 
 ## Explique suas escolhas.
+
+A aplicação foi construída usando StyledSheet do próprio react native, todas as telas estão responsivas pelo arquivo metrics.ts, sua navegação foi construída com react Navigation, que faz interseção com o deeplink.
+Foi usado FlashList para melhor performance dos itens listados, para requisições, foi utilizado axios e o tanstack react-query em específico ele guarda dados em cache facilitando o carregamento instantâneo do itens em tela.
+Foi usado o Zustand para realizar a persistência de dados juntamente com asyncStorage e tendo uma resposta instantânea das mudanças de dados em tela.
+E por fim o RNFirebase foi usado para realizar cadastro de novos usuários, login e logout.
+Não utilizei notification pois ficou muito vago o que poderia ser feito com ele, que que aplicação não tem muitas telas e nem regras.
+
+## Colo usar deeplink
 
 | link para deeplink do app |                      |
 | ------------------------- | -------------------- |
@@ -77,8 +86,22 @@ GET https://fakestoreapi.com/products/{id}
 | desafioaiqfome://         | com.italo.aiqfome:// |
 | com.italo.aiqfome://      | desafioaiqfome://    |
 
-como executar deeplink no terminal
+como executar deeplink em desenvolvimento.
 
 ```javascript
 npx uri-scheme open com.italo.aiqfome://port --platform
 ```
+
+direto do terminal
+
+```javascript
+npx uri-scheme open com.italo.aiqfome://Details/id --platform
+```
+
+### Contato
+
+[💻 Linkedin](https://www.linkedin.com/in/italoasouzati/)
+
+📫 **italoasouzat.i@gmail.com**
+
+By 📱💻❤ **Ítalo Araújo Souza**

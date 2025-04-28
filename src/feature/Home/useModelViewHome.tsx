@@ -60,6 +60,7 @@ export function useModelViewHome() {
     return {
         listProduct,
         loading: listProductQuery.isLoading,
+        listProductQuery,
         dataTab,
         handleTab,
     };
