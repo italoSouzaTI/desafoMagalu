@@ -29,7 +29,22 @@ Tenha o **Yarn** na versão
 Após as verificações acima, com projeto aberto na sua IDE de preferência, rode o comando abaixo, isso instalara todas depências do projeto necessarias.
 
 ```javascript
-yarn;
+yarn
+```
+
+É preciso criar um arquivo na raiz do projeto chamado .env com seguinte conteúdo dentro 
+```javascript
+EXPO_PUBLIC_BASE_URL = "https://fakestoreapi.com/"
+```
+
+Para executar no android 
+```javascript
+yarn android
+```
+
+Para executar no android 
+```javascript
+yarn ios
 ```
 
 # Requistos do projeto
@@ -78,8 +93,10 @@ GET https://fakestoreapi.com/products/{id}
 
 A aplicação foi construída usando StyledSheet do próprio react native, todas as telas estão responsivas pelo arquivo metrics.ts, sua navegação foi construída com react Navigation, que faz interseção com o deeplink.
 Foi usado FlashList para melhor performance dos itens listados, para requisições, foi utilizado axios e o tanstack react-query em específico ele guarda dados em cache facilitando o carregamento instantâneo do itens em tela.
+
 Foi usado o Zustand para realizar a persistência de dados juntamente com asyncStorage e tendo uma resposta instantânea das mudanças de dados em tela.
 E por fim o RNFirebase foi usado para realizar cadastro de novos usuários, login e logout.
+
 Não utilizei notification pois ficou muito vago o que poderia ser feito com ele, que que aplicação não tem muitas telas e nem regras.
 
 ## Colo usar deeplink
