@@ -2,9 +2,11 @@ import { useDatatabStore } from "@store/useDatatabStore";
 import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
 import { useListProductStore } from "@store/useListProductStore";
 import { IProduct } from "src/feature/https/types/getProducts";
-
+import firestore from "@react-native-firebase/firestore";
+import { useUserCurrentStore } from "@store/useUserCurrentStore";
 export function useSaveFavorite() {
     const { dataTab } = useDatatabStore((state) => state);
+    const { token } = useUserCurrentStore((state) => state);
     const { setListProduct, listProduct } = useListProductStore((state) => state);
     const { favoriteProduct, setFavoriteProduct } = useFavoriteStorageStore((state) => state);
     function saveFavorite(product: IProduct) {
@@ -46,7 +48,24 @@ export function useSaveFavorite() {
             }
 
             setListProduct(finish);
+            saveFavoritesDB();
         } catch (error) {}
+    }
+    async function saveFavoritesDB() {
+        try {
+            const userFavoritesRef = firestore().collection("favorite").doc(String(token));
+            await userFavoritesRef.set(
+                {
+                    favorites: favoriteProduct,
+                    updatedAt: firestore.FieldValue.serverTimestamp(),
+                },
+                { merge: true }
+            );
+            console.log("Favoritos salvos com sucesso para o token:", token);
+        } catch (error) {
+            console.error("Erro ao salvar favoritos:", error);
+            throw error;
+        }
     }
     return {
         saveFavorite,

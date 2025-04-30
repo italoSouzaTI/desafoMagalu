@@ -1793,6 +1793,16 @@
   dependencies:
     plist "^3.1.0"
 
+"@react-native-firebase/firestore@^22.0.0":
+  version "22.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-22.0.0.tgz#2efc6924dfddd5a70e8879b8206cbc19c4f20126"
+  integrity sha512-oyNfbTdvPtGHnOjGopq9/WIVUY4iW3GO4vBeXsrmD46cZo01O5tsyKCjivYGf/wYbBG1WZe/bPoWdnXEbhlRMA==
+
+"@react-native-firebase/messaging@^22.0.0":
+  version "22.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-22.0.0.tgz#66f1a02e2881abbe6953cdece4766efdbfe40e38"
+  integrity sha512-l9wVECx1FdK5W5FK2PjnEnPFVg0bDvMuA5CUOzLhItnRAXKsvR8ovo/YCZxWqF16PxSlxxcBgDISHqlppH2Svw==
+
 "@react-native/assets-registry@0.76.9":
   version "0.76.9"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.76.9.tgz#ec63d32556c29bfa29e55b5e6e24c9d6e1ebbfac"

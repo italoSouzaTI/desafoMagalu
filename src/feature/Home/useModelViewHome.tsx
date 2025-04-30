@@ -1,13 +1,15 @@
-import { useState, useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../https/http";
-import { IProduct } from "../https/types/getProducts";
 import { useFavoriteStorageStore } from "@store/useFavoriteStorageStore";
 import { useListProductStore } from "@store/useListProductStore";
 import { useDatatabStore } from "@store/useDatatabStore";
+import firestore from "@react-native-firebase/firestore";
+import { useUserCurrentStore } from "@store/useUserCurrentStore";
 export function useModelViewHome() {
     const { setListProduct, listProduct } = useListProductStore((state) => state);
-    const { favoriteProduct } = useFavoriteStorageStore((state) => state);
+    const { favoriteProduct, setFavoriteProduct } = useFavoriteStorageStore((state) => state);
+    const { token } = useUserCurrentStore((state) => state);
     const { dataTab, setDataTab } = useDatatabStore((state) => state);
     const listProductQuery = useQuery({
         queryKey: ["aiqFomeProducts"],
@@ -37,6 +39,10 @@ export function useModelViewHome() {
 
     async function transformDataList() {
         try {
+            const verifyExistFavoriteDB = await getFavorites();
+            if (verifyExistFavoriteDB.length) {
+                setFavoriteProduct(verifyExistFavoriteDB);
+            }
             let auxData = listProductQuery.data;
             auxData?.map((item) => {
                 item.isFavorite = false;
@@ -51,6 +57,22 @@ export function useModelViewHome() {
             setListProduct(updatedProducts);
         } catch (error) {}
     }
+
+    async function getFavorites() {
+        try {
+            const documentSnapshot = await firestore().collection("favorite").doc(String(token)).get();
+            if (documentSnapshot.exists) {
+                const data = documentSnapshot.data();
+                return data.favorites || [];
+            } else {
+                return [];
+            }
+        } catch (error) {
+            console.error("Erro ao buscar favoritos:", error);
+            throw error;
+        }
+    }
+
     useEffect(() => {
         if (listProductQuery.hasOwnProperty("data") && listProductQuery.data != undefined) {
             transformDataList();
