@@ -104,7 +104,8 @@ Não utilizei notification pois ficou muito vago o que poderia ser feito com ele
 
 ## Atualização
 
-Foi implementado push notification onde no data e passado somente o id do item assim, causando uma busca pelo item na url
+Foi implementado push notification onde no data e passado somente o id do item assim, causando uma busca pelo item na url.
+No IOS é necessário uma conta na apple para implementar push.
 
 ## Colo usar deeplink
 
