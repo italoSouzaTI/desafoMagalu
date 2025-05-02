@@ -32,6 +32,9 @@ export function useModelViewHome() {
         setDataTab(cloneDataTab);
     }
     function handleFavorite() {
+        if (listProduct.length == 0) {
+            return [];
+        }
         let cloneListProduct = listProduct.slice();
         let newFavority = cloneListProduct.filter((item) => item.isFavorite === true);
         setListProduct(newFavority);

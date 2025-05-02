@@ -29,20 +29,23 @@ Tenha o **Yarn** na versão
 Após as verificações acima, com projeto aberto na sua IDE de preferência, rode o comando abaixo, isso instalara todas depências do projeto necessarias.
 
 ```javascript
-yarn
+yarn;
 ```
 
-É preciso criar um arquivo na raiz do projeto chamado .env com seguinte conteúdo dentro 
+É preciso criar um arquivo na raiz do projeto chamado .env com seguinte conteúdo dentro
+
 ```javascript
-EXPO_PUBLIC_BASE_URL = "https://fakestoreapi.com/"
+EXPO_PUBLIC_BASE_URL = "https://fakestoreapi.com/";
 ```
 
-Para executar no android 
+Para executar no android
+
 ```javascript
 yarn android
 ```
 
-Para executar no android 
+Para executar no android
+
 ```javascript
 yarn ios
 ```
@@ -66,7 +69,7 @@ GET https://fakestoreapi.com/products/{id}
 ### Integrações (Opcional)
 
 -   [x] Firebase (Auth, Firestore ou Analytics).
--   [ ] Push Notifications (via Expo ou FCM).
+-   [x] Push Notifications (via Expo ou FCM).
 -   [x] Deep Linking ou Links Dinâmicos.
 
 | Critério                                             | Peso     |
@@ -98,6 +101,10 @@ Foi usado o Zustand para realizar a persistência de dados juntamente com asyncS
 E por fim o RNFirebase foi usado para realizar cadastro de novos usuários, login e logout.
 
 Não utilizei notification pois ficou muito vago o que poderia ser feito com ele, que que aplicação não tem muitas telas e nem regras.
+
+## Atualização
+
+Foi implementado push notification onde no data e passado somente o id do item assim, causando uma busca pelo item na url
 
 ## Colo usar deeplink
 

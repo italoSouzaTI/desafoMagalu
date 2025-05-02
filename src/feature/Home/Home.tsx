@@ -12,7 +12,7 @@ import { IProduct } from "../https/types/getProducts";
 export function Home() {
     const { dataTab, handleTab, listProduct, loading, listProductQuery } = useModelViewHome();
 
-    if (loading && listProduct.length === 0) {
+    if (loading) {
         return (
             <>
                 <Header />

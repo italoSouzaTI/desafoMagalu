@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import config from "metro.config";
 import { Details, Home } from "src/feature";
 
 interface PrivateProps {

@@ -4,9 +4,11 @@ import { useListProductStore } from "@store/useListProductStore";
 import { IProduct } from "src/feature/https/types/getProducts";
 import firestore from "@react-native-firebase/firestore";
 import { useUserCurrentStore } from "@store/useUserCurrentStore";
+import { useCurrentFavoriteStore } from "@store/useCurrentFavoriteStore";
 export function useSaveFavorite() {
     const { dataTab } = useDatatabStore((state) => state);
     const { token } = useUserCurrentStore((state) => state);
+    const { setCurrentFavorite } = useCurrentFavoriteStore((state) => state);
     const { setListProduct, listProduct } = useListProductStore((state) => state);
     const { favoriteProduct, setFavoriteProduct } = useFavoriteStorageStore((state) => state);
     function saveFavorite(product: IProduct) {
@@ -46,7 +48,7 @@ export function useSaveFavorite() {
             } else {
                 finish = cloneListProduct.filter((item) => item.isFavorite);
             }
-
+            setCurrentFavorite(finish.filter((item) => item.id == product.id)[0]);
             setListProduct(finish);
             saveFavoritesDB();
         } catch (error) {}

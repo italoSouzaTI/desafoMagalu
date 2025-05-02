@@ -11,7 +11,6 @@ export function useModelViewDetails() {
     const { favoriteProduct } = useFavoriteStorageStore((state) => state);
     const { currentFavorite, setCurrentFavorite } = useCurrentFavoriteStore((state) => state);
     const { saveFavorite } = useSaveFavorite();
-    console.log("params", params);
     const ProductQuery = useQuery({
         enabled: !!params?.productId,
         queryKey: [`aiqFomeProducts/${params?.productId}`],
